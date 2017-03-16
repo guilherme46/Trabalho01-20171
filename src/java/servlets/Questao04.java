@@ -33,6 +33,7 @@ public class Questao04 extends HttpServlet {
             throws ServletException, IOException {
         
         int nf = Integer.valueOf(request.getParameter("nff"));
+        int ne = Integer.valueOf(request.getParameter("nee"));
        
     
         if (nf<7)
