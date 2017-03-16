@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Guilherme
  */
-@WebServlet(name = "Questao1", urlPatterns = {"/questao1"})
-public class Questao1 extends HttpServlet {
+@WebServlet(name = "Questao09", urlPatterns = {"/questao09"})
+public class Questao09 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,15 +32,11 @@ public class Questao1 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int n = Integer.valueOf(request.getParameter("numero"));
-        int antecessor = n - 1;
-        int sucessor = n + 1;
-        int quadrado = n * n;
-        double raizQuadrada = Math.sqrt(n);
+        int n1 = Integer.valueOf(request.getParameter("num1"));
+        int n2 = Integer.valueOf(request.getParameter("num2"));
+        int n3 = Integer.valueOf(request.getParameter("num3"));
         
-        if(n == 0)
-            response.sendRedirect("q01.jsp");
-        
+        int soma = n1 + n2 + n3;
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -48,17 +44,21 @@ public class Questao1 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Questao1</title>");            
+            out.println("<title>Questao09</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Resultado</h1>");
-            out.println("Antecessor: "+antecessor);
-            out.println("<br>Sucessor: "+sucessor);
-            out.println("<br>Quadrado: "+quadrado);
-            out.println("<br>Raiz Quadrada: "+raizQuadrada);
-            if(quadrado > 50)
-                out.println("<br>Quadrado é maior que 50, "
-                        + "multiplica-se o numero por 2: "+(n * 2));
+            
+          if (n1==0 || n2==0 || n3==0)
+                out.println("Foi digitado um numero invalido");
+         else if(soma<0)
+                out.println("A soma dos numeros deu negativo");
+          else if(soma>=10)
+                out.println("A soma dos numeros foi maior que 10");
+          else if(soma<10)
+            out.println("A soma dos numeros foi menor que 10");
+          
+           
             out.println("</body>");
             out.println("</html>");
         }

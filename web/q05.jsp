@@ -1,7 +1,7 @@
 <%-- 
     Document   : q05
     Created on : 16/03/2017, 14:09:13
-    Author     : Amanda
+    Author     : Guilherme
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
