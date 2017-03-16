@@ -50,7 +50,7 @@ public class Questao5 extends HttpServlet {
             if(n>0)
                 out.println("<br>O numero e positivo e a sua multiplicacao e:" +(n*2));
             if(n <=0)
-                out.println("<br>O numero e menor que 0, tente novamente!");
+                out.println("<br>O numero inserido e menor que 0, tente novamente!");
          
             out.println("</body>");
             out.println("</html>");
