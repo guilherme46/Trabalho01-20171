@@ -15,10 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Guilherme
+ * @author Guilherme , Rodrigo e Fabinho
  */
 @WebServlet(name = "Questao04", urlPatterns = {"/questao04"})
 public class Questao04 extends HttpServlet {
+    
+    public static boolean exame = false;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,15 +33,26 @@ public class Questao04 extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+     
+        String situacao = "";
         
-        int nf = Integer.valueOf(request.getParameter("nff"));
-        int ne = Integer.valueOf(request.getParameter("nee"));
-       
-    
-        if (nf<7)
-        response.sendRedirect("q004.jsp");
+        if(exame){
+            int ne = Integer.valueOf(request.getParameter("nee"));
+            if(ne < 7)
+                situacao = "Aluno REPROVADO no exame!";
+            else
+                situacao = "Aluno APROVADO no exame";
+        }else{
+            int nf = Integer.valueOf(request.getParameter("nff"));
+            if(nf < 7){
+                exame = true;
+                response.sendRedirect("q04.jsp");
+            }else{
+                situacao = "Aprovado!";
+            }
+        }
       
-       
+                             
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -49,27 +62,15 @@ public class Questao04 extends HttpServlet {
             out.println("<title>Questao04</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Resultado</h1>");
-        
-
-	 if (nf>=7)
-             out.println("Voce está aprovado sem a necessidade de exame");
-         
-         
-         if (ne>=6)
-             out.println("Parabéns, a sua nota do exame foi maior que 6 e você está APROVADO!");
-         
-                     else if (ne<6){
-                         out.println("Infelizmente você não alcançou a nota 6 e está REPROVADO!");
-                     }     
-         
+            out.println("<h1>"+situacao+"</h1>");
             out.println("</body>");
             out.println("</html>");
         
         }
-        }
-
         
+        
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
