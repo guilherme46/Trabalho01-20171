@@ -56,9 +56,9 @@ public class Questao015 extends HttpServlet {
       i = 2;
       while ((ehPrimo == true) && (i <= (n / 2))) {
         if ((n % i) == 0)
-           ehPrimo = false;   // encontrou um divisor, portanto, não eh primo
-        else i++;             // próximo divisor utilizando operador de
-                              // autoincremento (i++)
+           ehPrimo = false;   
+        else i++;             
+                              
       }
  
       if (ehPrimo == true)
