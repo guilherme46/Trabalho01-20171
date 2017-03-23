@@ -52,7 +52,7 @@ public class Questao012 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Questao011</title>");            
+            out.println("<title>Questao012</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Resultado</h1>");

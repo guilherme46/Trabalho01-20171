@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Guilherme
+ * @author Guilherme e Rodrigo
  */
-@WebServlet(name = "Questao014", urlPatterns = {"/questao014"})
-public class Questao014 extends HttpServlet {
+@WebServlet(name = "Questao015", urlPatterns = {"/questao015"})
+public class Questao015 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,9 +32,7 @@ public class Questao014 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int primo = Integer.valueOf(request.getParameter("numprimo"));
-        
-       
+      
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -42,32 +40,41 @@ public class Questao014 extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Questao014</title>");            
+            out.println("<title>Questao015</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Resultado</h1>");
          
-          
-           
-            boolean isPrimo = true;
-		int divisor = 0;
-		for (int i = 2; i <= primo; i++) {
-			if ( ( (primo % i) == 0) && (i != primo) ) {
-				isPrimo = false;
-				divisor = i;
-				break;
-			}
-		}
-		if (isPrimo) {
-			out.println("O numero é Primo" );
-		} else {
-			out.println("O numero não é Primo");
-		}
+          out.println("Numeros primos entre 1 e 100<br>");
+  
+      int i;
+ 
+    for (int n=0; n<=100; n++) {
+ 
+      boolean ehPrimo = true;
+ 
+      i = 2;
+      while ((ehPrimo == true) && (i <= (n / 2))) {
+        if ((n % i) == 0)
+           ehPrimo = false;   // encontrou um divisor, portanto, não eh primo
+        else i++;             // próximo divisor utilizando operador de
+                              // autoincremento (i++)
+      }
+ 
+      if (ehPrimo == true)
+         out.println(n);
+    }
+    out.println();
+  
+
+        
+       
+            
             out.println("</body>");
             out.println("</html>");
-        }
+        
     }
-
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
